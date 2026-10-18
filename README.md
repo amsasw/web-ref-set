@@ -55,13 +55,15 @@ python -m http.server 8000
 ## 5. 文件结构
 
 ```text
-stylekit/
+web-ref-set/
 ├── README.md
-└── stylekit_website_gallery.html
+├── stylekit_website_gallery.html
+└── toothpaste_theme_demo.html
 ```
 
 - `README.md`：项目介绍、运行方法、功能说明和开发规划。
-- `stylekit_website_gallery.html`：原始多风格灵感库。\n- `toothpaste_theme_demo.html`：固定牙膏产品主题的多风格对比原型。
+- `stylekit_website_gallery.html`：原始多风格灵感库。
+- `toothpaste_theme_demo.html`：固定牙膏产品主题的多风格对比原型。
 
 随着功能增加，可以逐步拆分为 `assets/`、`src/styles/`、`src/scripts/`、`src/data/` 和 `src/components/` 等模块。该结构属于后续规划。
 
