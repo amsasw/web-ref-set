@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>清序 · 跨风格产品页实验室</title>
+<style>
+:root{font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#202820;background:#f4f6f2;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button{font:inherit;cursor:pointer}
+.topbar{position:sticky;top:0;z-index:10;background:#fffffff0;backdrop-filter:blur(14px);border-bottom:1px solid #e4e9e1;padding:14px clamp(16px,4vw,56px);display:flex;gap:18px;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:.04em}.logo span{color:#56836a}.toplinks{display:flex;gap:16px;color:#68756a;font-size:13px}
+main{max-width:1440px;margin:auto;padding:28px clamp(14px,3vw,42px) 64px}.intro{display:flex;gap:24px;justify-content:space-between;align-items:end;margin-bottom:22px}.eyebrow{font-size:11px;letter-spacing:.18em;color:#64806a;font-weight:800}.intro h1{font-size:clamp(27px,4vw,42px);margin:8px 0}.intro p{margin:0;color:#748075;max-width:640px;line-height:1.65}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 16px}.controls button,.switcher button{border:1px solid #dce3da;background:white;color:#344239;border-radius:999px;padding:9px 14px;font-size:13px}.controls button.active,.switcher button.active{background:#243c2d;color:white;border-color:#243c2d}
+.compare-note{font-size:12px;color:#7a857b;margin:10px 0 18px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.gallery.one{grid-template-columns:minmax(0,1fr)}.gallery.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.demo{--bg:#f5f7f0;--ink:#24372a;--accent:#668c69;--panel:#e5eee1;--line:#d8e3d5;--radius:18px;--shadow:0 12px 34px #24372a12;--font:inherit;--serif:normal;--space:24px;overflow:hidden;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);font-family:var(--font)}
+.demo[data-style="mint"]{--bg:#f4f8f1;--ink:#24372a;--accent:#527d5c;--panel:#e2eddf;--line:#d8e3d5;--radius:22px;--shadow:0 12px 34px #24372a12;--space:25px}
+.demo[data-style="studio"]{--bg:#fffaf2;--ink:#27221d;--accent:#bb6a45;--panel:#f4e4d2;--line:#e7d3bd;--radius:4px;--shadow:8px 8px 0 #27221d;--font:Georgia,"Songti SC",serif;--space:20px}
+.demo[data-style="pop"]{--bg:#fff0e9;--ink:#381e34;--accent:#e74e7b;--panel:#ffd4dc;--line:#381e34;--radius:28px;--shadow:0 8px 0 #381e34;--font:"Trebuchet MS","Microsoft YaHei",sans-serif;--space:24px}
+.demo[data-style="dark"]{--bg:#101a20;--ink:#f0f7f3;--accent:#74e2c0;--panel:#1c3036;--line:#355158;--radius:12px;--shadow:0 12px 34px #0005;--space:22px}
+.demo-head{padding:14px var(--space);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.12em}.demo-head strong{font-size:13px;letter-spacing:.05em}.demo-head span{opacity:.7}
+.hero{padding:clamp(22px,3vw,38px) var(--space) 28px;display:grid;grid-template-columns:1fr .8fr;gap:18px;align-items:center;min-height:260px}
+.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:900}.hero h2{font-size:clamp(27px,3vw,43px);line-height:1.06;letter-spacing:-.04em;margin:13px 0}.demo[data-style="studio"] .hero h2{font-weight:500;letter-spacing:-.06em}.hero p{font-size:12px;line-height:1.75;opacity:.76;max-width:360px}.cta{border:0;background:var(--accent);color:white;border-radius:var(--radius);padding:12px 16px;font-size:11px;font-weight:800;margin-top:10px}.demo[data-style="dark"] .cta{color:#10231f}.product-art{min-height:185px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--panel);border-radius:var(--radius);overflow:hidden}
+.glow{position:absolute;width:155px;height:155px;border-radius:50%;background:var(--accent);opacity:.18;filter:blur(2px)}
+.tube{width:82px;height:154px;position:relative;z-index:1;transform:rotate(8deg);filter:drop-shadow(9px 10px 6px #0002)}
+.tube-body{position:absolute;inset:0 4px 16px;background:linear-gradient(110deg,#fff 0%,#e9f4e8 30%,#fff 62%,#c5ddc6 100%);border:1px solid #9eb6a1;border-radius:12px 12px 7px 7px;clip-path:polygon(8% 0,92% 0,100% 82%,87% 100%,13% 100%,0 82%)}
+.tube-band{position:absolute;left:8px;right:8px;top:47px;height:36px;background:#4f8867;display:flex;align-items:center;justify-content:center;color:white;font-size:7px;font-weight:900;letter-spacing:.12em;transform:rotate(-3deg)}
+.tube-name{position:absolute;top:28px;left:0;right:0;text-align:center;color:#365c45;font-size:8px;font-weight:900}.tube-cap{position:absolute;bottom:0;left:23px;width:35px;height:22px;background:#d6e0d2;border:1px solid #a7b8a3;border-radius:3px 3px 7px 7px}
+.demo[data-style="studio"] .tube-band{background:#b86b48}.demo[data-style="pop"] .tube-band{background:#e74e7b}.demo[data-style="dark"] .tube-body{background:linear-gradient(110deg,#d8eee5,#fff,#b5d4c8)}.demo[data-style="dark"] .tube-band{background:#157a66}
+.features{padding:0 var(--space) 22px}.section-title{display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--line);padding-top:18px;margin-bottom:12px}.section-title h3{font-size:15px;margin:0}.section-title span{font-size:9px;opacity:.65}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.feature{padding:12px 10px;background:var(--panel);border-radius:calc(var(--radius) * .65);min-height:80px}.feature b{font-size:10px;display:block;margin-bottom:7px}.feature p{font-size:9px;line-height:1.6;margin:0;opacity:.72}
+.buy{margin:0 var(--space) var(--space);padding:15px;background:var(--panel);border-radius:var(--radius);display:flex;align-items:center;justify-content:space-between;gap:10px}.price small{display:block;font-size:9px;opacity:.7}.price strong{font-size:22px}.qty{display:flex;align-items:center;gap:8px;font-size:12px}.qty button{width:25px;height:25px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:50%}.buy .cta{margin:0;padding:11px 12px}.demo-foot{padding:0 var(--space) 15px;display:flex;justify-content:space-between;font-size:9px;opacity:.55}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#1d3225;color:white;padding:12px 18px;border-radius:999px;font-size:13px;box-shadow:0 8px 30px #0002;opacity:0;pointer-events:none;transition:.2s;z-index:20}.toast.show{opacity:1}
+@media(max-width:780px){.intro{display:block}.toplinks{display:none}.gallery,.gallery.four{grid-template-columns:1fr}.demo[data-style] .hero{grid-template-columns:1fr 0.75fr}.hero h2{font-size:30px}.product-art{min-height:160px}.tube{transform:scale(.85) rotate(8deg)}}
+@media(max-width:460px){.demo[data-style] .hero{grid-template-columns:1fr}.product-art{min-height:145px}.hero{padding-top:22px}.hero h2{font-size:35px}.feature-grid{grid-template-columns:1fr}.feature{min-height:0}.buy{flex-wrap:wrap}.buy .cta{flex:1}.intro p{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="logo">STYLEKIT <span>/ THEME LAB</span></div><nav class="toplinks"><span>固定主题</span><span>风格对比</span><span>设计实验室</span></nav><strong>清序 · 01</strong></header>
+<main>
+<section class="intro"><div><div class="eyebrow">SAME PRODUCT · DIFFERENT DESIGN LANGUAGE</div><h1>一个产品，四种表达。</h1><p>固定产品信息与内容结构，只改变视觉风格。对比配色、排版、圆角、空间感与组件气质，找到适合你的设计方向。</p></div></section>
+<div class="controls" id="styleControls"><button class="active" data-mode="mint">自然清新</button><button data-mode="studio">复古艺术</button><button data-mode="pop">年轻活力</button><button data-mode="dark">深色科技</button></div>
+<div class="switcher controls" aria-label="比较布局"><button data-layout="one">单页预览</button><button data-layout="two" class="active">双栏对比</button><button data-layout="four">四风格总览</button></div>
+<p class="compare-note">所有预览共用同一产品名称、文案、规格、价格与区块顺序。购买为演示交互，不会产生真实订单。</p>
+<section class="gallery" id="gallery"></section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const styles=[
+{id:"mint",name:"自然清新",brand:"QINGXU / DAILY CARE",kicker:"A FRESH START",title:"让清新，成为每日习惯。",desc:"清爽薄荷香气，温和细腻的膏体触感。为每天的早晚护理，留一点简单而舒适的仪式感。",accent:"#527d5c"},
+{id:"studio",name:"复古艺术",brand:"QINGXU · APOTHECARY",kicker:"MINT TOOTHPASTE Nº01",title:"日常之物，也值得被设计。",desc:"从经典药房汲取灵感，以克制的细节与清新的薄荷气息，重新想象日常护理。",accent:"#bb6a45"},
+{id:"pop",name:"年轻活力",brand:"QX! FRESH CLUB",kicker:"HELLO, MINTY!",title:"早八困倦？清新一下！",desc:"醒目的色彩、轻快的节奏，还有一口薄荷清新。让刷牙这件小事，也有好心情。",accent:"#e74e7b"},
+{id:"dark",name:"深色科技",brand:"QX / FORMULA 01",kicker:"PRECISION DAILY CARE",title:"清晰配方，清爽体验。",desc:"以精密感设计语言呈现日常护理。清楚的信息层级、利落的结构与冷静的视觉节奏。",accent:"#74e2c0"}
+];
+let layout="two",selected=["mint","studio"],quantity=1;
+function card(s){return `<article class="demo" data-style="${s.id}">
+<header class="demo-head"><strong>${s.brand}</strong><span>清序 · 薄荷牙膏</span></header>
+<section class="hero"><div><div class="kicker">${s.kicker}</div><h2>${s.title}</h2><p>${s.desc}</p><button class="cta" data-action="details">探索产品细节 ↗</button></div><div class="product-art" aria-label="清序薄荷牙膏包装示意图"><div class="glow"></div><div class="tube"><div class="tube-body"></div><div class="tube-name">QING XU</div><div class="tube-band">FRESH MINT</div><div class="tube-cap"></div></div></div></section>
+<section class="features"><div class="section-title"><h3>清新，从细节开始。</h3><span>01 — 03 / PRODUCT NOTES</span></div><div class="feature-grid"><div class="feature"><b>清爽薄荷</b><p>清新的薄荷风味，带来轻盈感受。</p></div><div class="feature"><b>细腻膏体</b><p>柔滑质地，日常使用舒适顺手。</p></div><div class="feature"><b>简洁包装</b><p>清楚易读的信息与利落的产品形态。</p></div></div></section>
+<section class="features"><div class="section-title"><h3>早晚，都照顾好自己。</h3><span>DAILY RITUAL</span></div><p style="font-size:11px;line-height:1.8;opacity:.75;margin:0">从早晨出门前，到夜晚休息前。清序让每日口腔护理回到简单、稳定、易坚持的日常习惯。</p></section>
+<section class="buy"><div class="price"><small>标准规格 · 体验装数据</small><strong>¥29.90</strong></div><div class="qty"><button data-action="minus" aria-label="减少数量">−</button><span class="quantity">${quantity}</span><button data-action="plus" aria-label="增加数量">+</button></div><button class="cta" data-action="buy">加入购物袋</button></section>
+<footer class="demo-foot"><span>120 g · 薄荷清新</span><span>DEMO / NOT FOR SALE</span></footer></article>`}
+function render(){let list=layout==="one"?[styles.find(s=>s.id===selected[0])]:layout==="two"?selected.map(id=>styles.find(s=>s.id===id)):styles;document.getElementById("gallery").className="gallery "+(layout==="one"?"one":layout==="four"?"four":"");document.getElementById("gallery").innerHTML=list.map(card).join("");document.querySelectorAll("[data-layout]").forEach(b=>b.classList.toggle("active",b.dataset.layout===layout));document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",selected.includes(b.dataset.mode)));document.querySelectorAll(".quantity").forEach(el=>el.textContent=quantity)}
+document.getElementById("styleControls").addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(!b)return;const id=b.dataset.mode;if(layout==="one"){selected=[id]}else if(selected.includes(id)){selected=selected.filter(x=>x!==id);if(!selected.length)selected=[id]}else{selected.push(id);if(layout==="two"&&selected.length>2)selected=selected.slice(-2)}render()});
+document.querySelector(".switcher").addEventListener("click",e=>{const b=e.target.closest("[data-layout]");if(!b)return;layout=b.dataset.layout;if(layout==="four")selected=styles.map(s=>s.id);else if(layout==="two"&&selected.length>2)selected=selected.slice(0,2);else if(layout==="one"&&selected.length>1)selected=[selected[0]];render()});
+let toastTimer;function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200)}
+document.getElementById("gallery").addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(!b)return;const action=b.dataset.action;if(action==="plus"){quantity=Math.min(9,quantity+1);render()}else if(action==="minus"){quantity=Math.max(1,quantity-1);render()}else if(action==="buy"){toast("演示反馈：已将清序薄荷牙膏加入购物袋（非真实订单）")}else if(action==="details"){toast("产品细节区：薄荷风味 · 细腻膏体 · 简洁包装")}});
+render();
+</script>
+</body>
+</html>
