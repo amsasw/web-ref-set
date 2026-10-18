@@ -6,11 +6,14 @@
 
 **风格集（STYLEKIT）** 是一个轻量级网页设计灵感库，旨在把不同风格的网页方案集中到一个可浏览、可比较的页面中。
 
-当前版本以独立 HTML 文件实现，不依赖框架或第三方运行时。用户可以在浏览器中打开页面，查看不同风格的预览、筛选设计方向、收藏喜欢的方案，并查看相应的设计说明与配色变量。
+当前版本使用原生 HTML、CSS 和 JavaScript，不依赖框架或第三方运行时。用户可以在浏览器中打开页面，查看不同风格的预览、筛选设计方向、收藏喜欢的方案，并查看相应的设计说明与配色变量。
+
+新增 [产品展示参考作品目录](references/README.md)：牙膏与口腔护理、母婴产品各 6 个作品，附原站链接、风格方向、页面结构和交互借鉴。本地打开 [作品浏览页](references/index.html) 可搜索和筛选。
 
 ## 2. 当前功能
 
 - **多风格展示**：内置 12 种风格方向，包括现代简约、深色科技、自然清新、商务专业、创意艺术、极简黑白、复古怀旧、动态视觉、旅行探索、电商购物、个人博客和知识文库。
+- **产品参考作品**：另收录 12 个真实品牌页面或官方模板，覆盖牙膏与口腔、母婴产品，区分来源记录与设计建议。
 - **分类筛选**：按风格类别浏览方案。
 - **关键词搜索**：搜索风格名称、描述、关键词和适用场景。
 - **收藏方案**：标记喜欢的设计；可切换为只看收藏。
@@ -18,7 +21,7 @@
 - **设计要点**：查看风格说明、适用场景、设计关键词。
 - **配色参考**：查看配色样本和 CSS 自定义属性，并尝试复制配色代码。
 - **响应式布局**：适配常见桌面浏览器和移动屏幕。
-- **无需构建**：当前版本为单文件 HTML，打开即可使用。
+- **无需构建**：下载完整仓库后，直接打开 HTML 即可使用。
 
 ## 3. 固定主题实验：清序 · 薄荷牙膏
 
@@ -37,7 +40,7 @@
 ### 方法一：直接打开
 
 1. 下载或克隆项目文件。
-2. 找到 `stylekit_website_gallery.html`。
+2. 找到 `stylekit_website_gallery.html`，或打开 `references/index.html` 浏览产品参考作品。
 3. 使用 Chrome、Microsoft Edge 或其他现代浏览器打开。
 
 无需安装 Node.js、无需执行 `npm install`，也无需启动开发服务器。
@@ -50,7 +53,7 @@
 python -m http.server 8000
 ```
 
-然后访问 `http://localhost:8000/stylekit_website_gallery.html`。
+然后访问 `http://localhost:8000/stylekit_website_gallery.html`，或 `http://localhost:8000/references/`。
 
 ## 5. 文件结构
 
@@ -59,16 +62,23 @@ web-ref-set/
 ├── README.md
 ├── stylekit_website_gallery.html
 ├── toothpaste_theme_demo.html
-└── assets/
-    ├── toothpaste-front.svg
-    ├── toothpaste-detail.svg
-    └── toothpaste-texture.svg
+├── assets/
+│   ├── toothpaste-front.svg
+│   ├── toothpaste-detail.svg
+│   └── toothpaste-texture.svg
+└── references/
+    ├── README.md
+    ├── index.html
+    ├── catalog.js
+    ├── app.js
+    └── styles.css
 ```
 
 - `README.md`：项目介绍、运行方法、功能说明和开发规划。
 - `stylekit_website_gallery.html`：原始多风格灵感库。
 - `toothpaste_theme_demo.html`：固定牙膏产品主题的多风格对比原型。
 - `assets/toothpaste-*.svg`：统一使用的原创产品包装、细节与质感示意素材。
+- `references/`：可在 GitHub 阅读的作品目录，以及无需构建的产品参考浏览页。
 
 随着功能增加，可以逐步拆分为 `assets/`、`src/styles/`、`src/scripts/`、`src/data/` 和 `src/components/` 等模块。该结构属于后续规划。
 
