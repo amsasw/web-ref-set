@@ -63,7 +63,8 @@ web-ref-set/
 
 - `README.md`：项目介绍、运行方法、功能说明和开发规划。
 - `stylekit_website_gallery.html`：原始多风格灵感库。
-- `toothpaste_theme_demo.html`：固定牙膏产品主题的多风格对比原型。\n- `assets/toothpaste-*.svg`：统一使用的原创产品包装、细节与质感示意素材。
+- `toothpaste_theme_demo.html`：固定牙膏产品主题的多风格对比原型。
+- `assets/toothpaste-*.svg`：统一使用的原创产品包装、细节与质感示意素材。
 
 随着功能增加，可以逐步拆分为 `assets/`、`src/styles/`、`src/scripts/`、`src/data/` 和 `src/components/` 等模块。该结构属于后续规划。
 
