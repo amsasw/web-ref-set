@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="STYLEKIT 产品展示参考作品集：牙膏、口腔护理与母婴产品的视觉风格、页面结构和交互借鉴。">
+  <title>产品参考作品 · STYLEKIT</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="catalog.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#works">跳到作品列表</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="../stylekit_website_gallery.html">风格集 <span>/ STYLEKIT</span></a>
+    <a class="back-link" href="../stylekit_website_gallery.html">风格画廊 ↗</a>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">PRODUCT REFERENCE COLLECTION / 01</p>
+        <h1 id="page-title">产品是主角。<br><span>风格有方向。</span></h1>
+        <p class="intro-copy">从一支牙膏，到陪伴成长的日常用品。<br>看看真实产品如何通过包装、影像、排版与交互，讲清自己的特点。</p>
+      </div>
+      <aside class="collection-note" aria-label="收录说明">
+        <span class="note-label">本期选集</span>
+        <strong>12 <span>个参考作品</span></strong>
+        <p>牙膏与口腔 · 母婴产品</p>
+        <div class="note-rule"></div>
+        <p class="small">风格名称与借鉴建议由本项目整理。两款护肤模板作为牙膏单品页的跨品类参考。</p>
+        <a href="README.md">阅读完整收录说明 ↗</a>
+      </aside>
+    </section>
+
+    <section class="collection" aria-labelledby="collection-title">
+      <div class="collection-heading">
+        <h2 id="collection-title">精选参考 <span>/ THE SELECTION</span></h2>
+        <p id="result-count" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="按产品主题筛选">
+          <button type="button" data-topic="all" aria-pressed="true">全部 <span data-count="all"></span></button>
+          <button type="button" data-topic="oral" aria-pressed="false">牙膏与口腔 <span data-count="oral"></span></button>
+          <button type="button" data-topic="baby" aria-pressed="false">母婴产品 <span data-count="baby"></span></button>
+        </div>
+        <div class="search-field">
+          <label for="search">搜索作品</label>
+          <input id="search" type="search" placeholder="品牌、风格、产品或交互…" autocomplete="off">
+        </div>
+      </div>
+      <p class="source-note">卡片配色用于提示风格方向；原站页面与演示可通过作品链接查看。页面结构、来源描述和借鉴建议分别列出。</p>
+      <div id="works" class="works" tabindex="-1"></div>
+      <div id="empty" class="empty" hidden>
+        <h3>没有找到匹配的作品</h3>
+        <p>试试“童趣”“牙膏”或“滚动”。</p>
+        <button type="button" id="reset">重置筛选</button>
+      </div>
+      <noscript><p class="empty">浏览页需要启用 JavaScript，也可直接阅读 <a href="README.md">完整作品目录</a>。</p></noscript>
+    </section>
+    <section class="next-step" aria-labelledby="next-title">
+      <div><p class="eyebrow">FROM REFERENCE TO DESIGN</p><h2 id="next-title">同一个产品，多种表达。</h2></div>
+      <p>牙膏主题已提供四种风格的交互原型，可以切换产品视图、规格与预览宽度；母婴主题继续积累产品与风格方向。<a href="../toothpaste_theme_demo.html">体验牙膏风格对比 →</a> <a href="https://github.com/amsasw/web-ref-set/issues/3" target="_blank" rel="noopener noreferrer">母婴主题 #3 ↗</a></p>
+    </section>
+  </main>
+  <footer class="wrap site-footer"><span>STYLEKIT / 产品展示参考作品</span><span>来源内容整理于 2026.10.17 · 外链在新标签页打开</span></footer>
+  <template id="work-template">
+    <article class="work">
+      <div class="work-cover">
+        <div class="cover-top"><span class="work-number"></span><span class="work-topic"></span></div>
+        <h3 class="work-name"></h3>
+        <p class="work-product"></p>
+        <div class="cover-bottom"><span class="work-style"></span><span class="palette" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      </div>
+      <div class="work-body">
+        <p class="source-kind"></p>
+        <dl>
+          <dt>页面结构</dt><dd class="work-structure"></dd>
+          <dt>来源记录</dt><dd class="work-evidence"></dd>
+          <dt>可以借鉴</dt><dd class="work-idea"></dd>
+        </dl>
+        <ul class="tags" aria-label="关键词"></ul>
+        <div class="work-links"></div>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
