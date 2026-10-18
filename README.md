@@ -58,7 +58,11 @@ python -m http.server 8000
 web-ref-set/
 ├── README.md
 ├── stylekit_website_gallery.html
-└── toothpaste_theme_demo.html
+├── toothpaste_theme_demo.html
+└── assets/
+    ├── toothpaste-front.svg
+    ├── toothpaste-detail.svg
+    └── toothpaste-texture.svg
 ```
 
 - `README.md`：项目介绍、运行方法、功能说明和开发规划。
