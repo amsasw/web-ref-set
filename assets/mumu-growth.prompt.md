@@ -1,0 +1,5 @@
+# 同一女孩的成长形态
+
+使用内置 image_gen 生成，资源：`assets/mumu-growth.png`。
+
+Create a wholesome family picture-book illustration, landscape 1536x1024, arranged as four equal panels in a precise 2x2 grid without borders or text. A character growth timeline showing the same brown-haired female person at four ages. Top left: baby drinking from a baby bottle, wearing a green baby outfit. Top right: school-age child drinking a glass of milk, wearing a green pinafore over a long-sleeved shirt. Bottom left: teenager drinking a glass of milk, wearing a loose long-sleeved sweater. Bottom right: adult woman drinking a glass of milk, wearing a cardigan over a long dress. One person per panel, fully clothed, ordinary family-friendly daily life. Small unlabelled milk-powder container beside each person. Consistent anime storybook style and character identity across panels, warm cream background, sage green and ivory clothing, soft light. Each panel is a centered waist-up composition with ample space around the head, and all objects contained inside its own panel. No text, no watermark.

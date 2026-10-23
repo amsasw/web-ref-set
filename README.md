@@ -23,9 +23,19 @@
 - **响应式布局**：适配常见桌面浏览器和移动屏幕。
 - **无需构建**：下载完整仓库后，直接打开 HTML 即可使用。
 
-## 3. 固定主题实验：清序 · 薄荷牙膏
+## 3. 清序 · 薄荷牙膏与渐白交互
 
-新增 `toothpaste_theme_demo.html`，作为 Issue #2 的第一版交互原型。它将同一份虚构产品内容呈现为四种风格：自然清新、复古艺术、年轻活力和深色科技。
+`toothpaste_theme_demo.html` 现为独立产品展示页：带着薄荷牙膏的牙刷进入画面，在牙齿表面来回刷动并起泡，随后泡沫散去、牙齿焕白。刷动过程为 8 秒，完成后停留 1.8 秒，再平滑复位并循环播放；暂停、重播及进度拖动同步控制牙刷、泡沫和牙色。另有清洁微粒、鼠标视差、滚动入场和卡片悬停效果。主视觉离开视野或页面进入后台时暂停；系统开启“减少动态效果”时默认静态展示。图片色彩变化是视觉演示，不代表产品功效。
+
+牙刷及牙膏为透明图片 `assets/toothbrush-paste.png`，使用内置 ImageGen 生成，完整提示词记录在 `assets/toothbrush-paste.prompt.md`。
+
+刷牙动画以刷毛尖端为锚点：牙齿、牙刷和泡沫共享正方形坐标系及视差变换，避免透明图片留白、独立旋转和移动端偏移造成错位。对齐回归检查为 `node tests/brush-alignment.cjs`（需要 Node.js、Playwright 和 Microsoft Edge；测试直接打开本地 HTML，无需启动服务），覆盖三个屏宽、四个刷动进度、鼠标视差及刷柄可见范围。
+
+页面样式和交互分别在 `assets/qingxu.css`、`assets/qingxu.js`，图片为 `assets/tooth-hero.png`，生成方式和完整提示词记录在 `assets/tooth-hero.prompt.md`。所有页面素材均可本地加载，无构建步骤及外部字体请求。
+
+原有四风格对比实验保存在 [toothpaste_comparison.html](./toothpaste_comparison.html)，以下描述对应这一版本。
+
+`toothpaste_comparison.html` 保留 Issue #2 的第一版交互原型。它将同一份虚构产品内容呈现为四种风格：自然清新、复古艺术、年轻活力和深色科技。
 
 - 支持单页预览、双栏对比、四风格总览，以及桌面 / 平板 / 手机预览宽度切换。
 - 固定产品文案、区块顺序、包装素材、规格与价格，重点比较视觉语言；可切换包装正面、管身细节和膏体质感三张原创 SVG 示意图，并打开大图预览。
@@ -35,7 +45,35 @@
 
 也可以先打开主页面 `stylekit_website_gallery.html`，通过首页新增的「固定主题实验」入口进入。直接打开 [牙膏主题风格对比原型](./toothpaste_theme_demo.html) 也可体验。购买操作仅展示演示反馈，不会创建真实订单。
 
+### 母婴奶粉主题：初芽 MUMU
+
+打开 [milk_formula_theme.html](./milk_formula_theme.html) 查看奶油白、杏色与鼠尾草绿的独立品牌概念页。页面包含奶粉罐主视觉、品牌故事、量勺落粉与奶液旋动动画、包装规格选择和演示心愿袋。
+
+动画支持暂停、重播、拖动进度及阶段跳转，滚出视野或进入后台时暂停；尊重系统的减少动态效果设置。该页面为虚构品牌设计展示，动画不作为冲调指导。
+
+`#feeding` 已升级为 28 秒步行成长短片：同一女孩从幼儿走向成年，每阶段拿着奶瓶或奶杯，使用生成的步行动画帧、背景移动和成长转场。支持暂停、重播、拖动和 MP4 下载。实现与导出说明见 [成长短片](docs/mumu-growth-film.md)，运行 `node tests/growth-film.cjs` 验证交互、响应式布局和视频元数据。
+
+样式与交互位于 `assets/mumu.css` 和 `assets/mumu.js`。奶粉罐图片使用内置 ImageGen 生成，位于 `assets/mumu-formula.png`，完整提示词记录在 `assets/mumu-formula.prompt.md`。`node tests/milk-experience.cjs` 检查主要交互（需要 Playwright 和 Edge，无需启动服务）。
+
 ## 4. 如何运行
+
+新增三个完整产品动态主题，均已接入风格集首页：
+
+| 主题 | 页面 | 动态体验 |
+| --- | --- | --- |
+| SLOW 慢焙咖啡 | [coffee_theme.html](coffee_theme.html) | 咖啡注入、蒸汽升腾 |
+| LUNE 月迹香氛 | [perfume_theme.html](perfume_theme.html) | 喷口香雾、光点扩散 |
+| DEW 初露精华 | [serum_theme.html](serum_theme.html) | 滴管凝滴、液滴下落、水面涟漪 |
+
+三个页面复用 `assets/atelier.css` 和 `assets/atelier.js`，各自采用暖棕、深墨绿与浅绿配色及不同首屏构图。支持阶段跳转、进度拖动、暂停重播、规格与数量选择、演示心愿单、离屏暂停及减少动态效果。无需构建，可直接打开。
+
+咖啡页 `#film` 新增独立短片播放器与下载入口：`assets/coffee-ritual.mp4`（20 秒、1280×720、30 fps、H.264、无音轨），封面为 `assets/coffee-ritual-poster.jpg`。视频复用已有生成图片和 Canvas 动画，以 FFmpeg 编码，不是生成式实拍视频。启动 8010 端口服务器后运行 `node tests/export-coffee-film.cjs` 可重新导出；运行 `node tests/coffee-film.cjs` 验证播放、暂停、跳转与移动端布局。
+
+视频预览使用支持 Range 分段请求的成熟静态服务：`npx --yes http-server@14.1.1 . -p 8011 -a 127.0.0.1 -c-1`，打开 `http://127.0.0.1:8011/coffee_theme.html#film`。咖啡视频测试默认连接 8011，可通过 `PREVIEW_URL` 指定地址。原 Python 静态服务不支持 Range 时，浏览器可能无法拖动视频进度。
+
+三张产品图片均由内置 image_gen 生成。资源为 `assets/coffee-hero.png`、`assets/perfume-hero.png`、`assets/serum-hero.png`，完整提示词保存在各自同名 `.prompt.md` 文件中。
+
+运行本地服务器 `python -m http.server 8010` 后，使用 `node tests/product-themes.cjs` 验证三个主题的图片比例、主题配色、响应式布局、动态交互与首页入口；测试需要 Playwright 和 Microsoft Edge。
 
 ### 方法一：直接打开
 

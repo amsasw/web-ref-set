@@ -40,16 +40,22 @@ function createCard(work) {
   const links = card.querySelector('.work-links');
   links.append(createLink(work.kind === 'Framer 模板' ? '官方模板页' : '访问原站', work.url, work.name));
   if (work.detailUrl) links.append(createLink(work.detailLabel, work.detailUrl, work.name));
-  return card;
+  return article;
 }
+
+// Build immutable card content and searchable text once, then reuse the nodes.
+const entries = productReferences.map(work => ({
+  work,
+  card: createCard(work),
+  text: [work.name, work.product, work.style, work.kind, topics[work.topic], work.structure, work.evidence, work.idea, ...work.tags].join(' ').toLocaleLowerCase()
+}));
 
 function render() {
   const query = search.value.trim().toLocaleLowerCase();
-  const list = productReferences.filter(work => {
-    const text = [work.name, work.product, work.style, work.kind, topics[work.topic], work.structure, work.evidence, work.idea, ...work.tags].join(' ').toLocaleLowerCase();
-    return (selectedTopic === 'all' || work.topic === selectedTopic) && text.includes(query);
-  });
-  works.replaceChildren(...list.map(createCard));
+  const list = entries.filter(({ work, text }) =>
+    (selectedTopic === 'all' || work.topic === selectedTopic) && text.includes(query)
+  );
+  works.replaceChildren(...list.map(entry => entry.card));
   filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.topic === selectedTopic)));
   document.querySelector('#result-count').textContent = `显示 ${list.length} / ${productReferences.length} 个作品`;
   document.querySelector('#empty').hidden = list.length > 0;

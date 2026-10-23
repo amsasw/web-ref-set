@@ -1,0 +1,6 @@
+# 动漫妈妈与宝宝
+
+生成方式：内置 image_gen，透明背景。
+资源：`assets/mumu-mother-anime.png`
+
+Use case: illustration-story. Create a polished premium Japanese anime illustration asset for a warm cream and sage baby-care website. Transparent background, landscape 1536x1024. Beautiful clearly adult mother about 28 years old, graceful mature face, long chestnut brown hair loosely tied, warm brown eyes, tender smile looking down at her baby, wearing a modest ivory knitted cardigan over sage dress. Waist-up seated portrait, complete head within frame, occupying left and center. She cradles an adorable small baby in sage swaddle in her arms across lower center. Baby head around image coordinate (850,610), face in three-quarter profile facing RIGHT, slightly open visible lips around (970,620), clear space to right of lips for separately animated bottle. Mother hands naturally supporting baby head and body from below. No bottle in this image. Beautiful delicate anime linework, soft painterly cel shading, elegant hair highlights, warm peach skin, gentle intimate maternal mood, anatomically coherent hands, coherent scale. Keep the rightmost 20 percent empty transparent for bottle overlay. No text, no watermark, no backdrop, no border. Mother fully clothed, wholesome nurturing scene.

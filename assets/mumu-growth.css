@@ -1,0 +1,21 @@
+.growth-art{position:relative;max-width:960px;aspect-ratio:16/9;margin:22px auto;overflow:hidden;border-radius:18px;background:#eee1cd}
+.walk-film canvas{display:block;width:100%;height:auto}
+.character-picker{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 0}
+.character-picker button[data-character=furina][aria-pressed=true]{background:#d7e6fa;border-color:#8caed4;color:#355a85}
+.character-picker button{border:1px solid #d6bfa6;border-radius:30px;background:#fff9ef;padding:11px 22px;color:#836c57;cursor:pointer;font:inherit;font-size:13px}
+.character-picker button[aria-pressed=true]{background:#f1d4da;border-color:#ca9ca7;color:#78495b}
+.character-picker small{font-size:8px;margin-left:7px;letter-spacing:1px}
+.character-picker button:focus-visible{outline:3px solid #ad7890;outline-offset:3px}
+.film-download{display:block;width:max-content;margin:20px auto 5px;color:#627354;font-size:13px;text-underline-offset:5px}
+.growth-art.walk-film{aspect-ratio:16/9}
+.feeding-card .growth-frame{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;transition:opacity .85s ease;pointer-events:none}
+.feeding-card .growth-frame.active{opacity:1}
+.growth-playing .growth-frame.active{animation:growth-drift 7s ease-in-out infinite alternate}
+.growth-stages{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:570px;margin:0 auto 22px}
+.growth-stages button{display:flex;justify-content:center;align-items:center;gap:10px;padding:13px 6px;border:1px solid #d9cbbb;border-radius:12px;background:#fff7eb;color:#7b6a55;cursor:pointer;transition:background .25s}
+.growth-stages button[aria-pressed=true]{background:#738569;color:#fff;border-color:#738569}
+.growth-stages small{font-size:9px;opacity:.7}
+.growth-stages button:focus-visible{outline:3px solid #bb8867;outline-offset:3px}
+@keyframes growth-drift{from{transform:scale(1)}to{transform:scale(1.035)}}
+@media(max-width:700px){.growth-art{margin:18px auto;aspect-ratio:1.35}.growth-stages{gap:5px}.growth-stages button{font-size:12px;gap:5px;padding:11px 4px}}
+@media(prefers-reduced-motion:reduce){.feeding-card .growth-frame{transition:none;animation:none}}
